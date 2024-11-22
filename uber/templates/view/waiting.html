@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../static/view/car.css">
+    <style>
+        h1{
+            color: white;
+            text-align: center;
+            font-size: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Waiting!</h1>
+    <div class="loading-window">
+        <div class="car">
+            <div class="strike"></div>
+            <div class="strike strike2"></div>
+            <div class="strike strike3"></div>
+            <div class="strike strike4"></div>
+            <div class="strike strike5"></div>
+            <div class="car-detail spoiler"></div>
+            <div class="car-detail back"></div>
+            <div class="car-detail center"></div>
+            <div class="car-detail center1"></div>
+            <div class="car-detail front"></div>
+            <div class="car-detail wheel"></div>
+            <div class="car-detail wheel wheel2"></div>
+        </div>
+    
+        <div class="text">
+            <span>waiting</span><span class = "dots">...</span>
+        </div>
+    </div>
+    <script>
+        // Function to extract the order ID from the URL
+        function getOrderIdFromURL() {
+            const pathArray = window.location.pathname.split('/'); // Split the URL path
+            const orderId = pathArray[pathArray.length - 1]; // Get the last part which should be the order ID
+            return orderId;
+        }
+    
+        // Function to initiate the chat with the driver
+        function startChat() {
+            const orderId = getOrderIdFromURL(); // Get the order ID from the URL
+            // Redirect to the chat page with the extracted order ID
+            window.location.href = `/user_chat/${orderId}`;
+        }
+    </script>
+
+  
+<button onclick="startChat()">Chat with Driver</button>
+    
+</body>
+</html>

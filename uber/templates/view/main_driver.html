@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Main Driver Page</title>
+    <!-- Linking Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <style>
+        /* CSS styles for the order boxes */
+        .order-box {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin: 20px;
+            width: 300px;
+            display: inline-block;
+            vertical-align: top;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #f9f9f9;
+        }
+
+        /* Styling for the icon */
+        .order-icon {
+            font-size: 24px;
+            color: black ;
+            margin-bottom: 10px;
+        }
+
+
+/* CSS */
+.button-6 {
+  align-items: center;
+  background-color: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: .25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: rgba(0, 0, 0, 0.85);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 1.25;
+  margin: 0;
+  min-height: 3rem;
+  padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+  position: relative;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: auto;
+}
+
+.button-6:hover,
+.button-6:focus {
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+.button-6:hover {
+  transform: translateY(-1px);
+}
+
+.button-6:active {
+  background-color: #F0F0F1;
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+  color: rgba(0, 0, 0, 0.65);
+  transform: translateY(0);
+}
+    </style>
+</head>
+<body>
+    <h1>Welcome, Driver!</h1>
+    <h2>Matching Orders with User Details:</h2>
+
+    {% for order in matching_orders_with_user_data %}
+    <div class="order-box">
+        
+        <i class="order-icon fas fa-tasks"></i>
+        <h3>Order Information</h3>
+        <p><strong>Order_id:</strong> {{ order.order_id }}</p>
+        <p><strong>Username:</strong> {{ order.username }}</p>
+        <p><strong>Pickup Location:</strong> {{ order.pickup_location }}</p>
+        <p><strong>Dropoff Location:</strong> {{ order.dropoff_location }}</p>
+        <p><strong>Pickup Time:</strong> {{ order.pickup_time }}</p>
+        <p><strong>Payment Method:</strong> {{ order.payment_method }}</p>
+        <p><strong>Order Status:</strong> {{ order.order_status }}</p>
+
+        <button class="button-6 accept-btn" data-order-id="{{ order.order_id }}" data-driver-username="{{ current_user.username }}">Accept order</button>
+
+
+
+        <a href="/driver_chat/{{ order.order_id }}" class="button-6 chat-btn">Chat with User</a>
+    </div>
+    {% endfor %}
+
+
+
+
+    <script>
+        // Get all elements with the class 'accept-btn'
+        const acceptButtons = document.querySelectorAll('.accept-btn');
+    
+        // Loop through all 'Accept order' buttons and attach a click event listener to each
+        acceptButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const orderId = this.getAttribute('data-order-id');
+                const driverUsername = this.getAttribute('data-driver-username');
+    
+                fetch(`/accept_order/${orderId}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ driverUsername }) // Send driver's username along with order ID
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // Handle the response after accepting an order
+                    console.log('Order acceptance response:', data);
+    
+                    // Check for success message or condition in the response
+                    if (data && data.message === 'Order assigned to driver') {
+                        // Redirect to the main_driver page upon successful order acceptance
+                        window.location.href = '/main_driver';
+                    } else {
+                        // Handle other cases if needed
+                        console.error('Failed to assign order:', data.error);
+                        // Add any necessary error handling or feedback to the user
+                    }
+                })
+                .catch(error => {
+                    // Handle fetch errors
+                    console.error('Error:', error);
+                    // Add any necessary error handling or feedback to the user
+                });
+            });
+        });
+    </script>
+    
+</body>
+</html>
+
+
+
+
+

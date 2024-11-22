@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../static/nav.css">
+    <link rel="stylesheet" href="../../static/auth/login.css">
+
+    
+    <title>Login</title>
+    <style>
+              * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+  }  
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="../../static/uber-logo.jpg" alt="Uber Logo">
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="{{url_for('home')}}"><button class="button-34" role="button">Home</button></a></li>
+            <li><button class="button-34" role="button">Help</button></li>
+        </ul>
+    </nav>
+    </nav>
+    <!-- Inputs -->
+
+    <div style="padding: 50px;">
+      <div id="container">
+          <h2>Login with your credentials:</h2>
+          <form method="POST">
+              {{ form.hidden_tag() }}
+              <div>
+                  <label for="username" style="padding: 10px;"></label>
+                  <!-- Added placeholder attribute for the username input -->
+                  <input type="text" id="Username" name="username" placeholder="Enter your username">
+                  {% if form.username.errors %}
+                      <span style="color: red;">{{ form.username.errors[0] }}</span><br>
+                  {% endif %}
+              </div>
+              <div>
+                  <label for="password" ></label>
+                  <!-- Added placeholder attribute for the password input -->
+                  <input type="password" id="Password" name="password" placeholder="Enter your password">
+                  {% if form.password.errors %}
+                      <span style="color: red;">{{ form.password.errors[0] }}</span><br>
+                  {% endif %}
+              </div>
+
+        <button class="button-50" role="button" type="submit">Login</button>
+        <p>Don't have an account? <a href="{{ url_for('home')}}">SIGN UP NOW</a></p>
+
+    </form>
+    </div>
+</body>
+</html>
+
+
+
+

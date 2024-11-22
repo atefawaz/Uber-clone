@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Driver Information</title>
+    <link rel="stylesheet" href="../../static/nav.css">
+    <link rel="stylesheet" href="../../static/auth/login.css">
+
+    <style>
+        /* Apply the same styling as in the previous form */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+          /* Style for select dropdown */
+          select {
+            padding: 8px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 200px;
+            max-width: 100%;
+        }
+
+        /* Style for select dropdown options */
+        option {
+            background-color: #f8f8f8;
+        }
+
+        /* Style when the dropdown is focused */
+        select:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+        }
+        
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="../../static/uber-logo.jpg" alt="Uber Logo">
+        </div>
+        <ul class="nav-links">
+            <li><a href="{{url_for('home')}}"><button class="button-34" role="button">Home</button></a></li>
+            <li><button class="button-34" role="button">Help</button></li>
+        </ul>
+    </nav>
+
+    <div style="padding: 50px;">
+        <div id="container">
+            <h2>Enter Additional Driver Information</h2>
+            <form method="POST">
+                {{ form.hidden_tag() }} <!-- Include CSRF token -->
+
+                <!-- Name -->
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name"  placeholder="Please enter your name">
+
+                <!-- Last Name -->
+                <label for="lastname">Last Name:</label>
+                <input type="text" id="lastname" name="lastname"  placeholder="Please enter your lastname">
+
+                <!-- Birthdate -->
+                <label for="birthdate">Birth Date:</label>
+                <input type="date" id="birthdate" name="birthdate"  placeholder="Please pick your birthdate">
+                <div style="margin: 10px;"></div>
+                <!-- Car Model -->
+                <label for="car_model">Car Model:</label>
+                <input type="text" id="car_model" name="car_model"  placeholder="Please enter your car model (+color)">
+
+                <!-- Car Plate -->
+                <label for="car_plate">Car Plate:</label>
+                <input type="text" id="car_plate" name="car_plate"  placeholder="Please enter your car plate">
+
+                <!-- Car Ride -->
+                <label for="car_ride">Car Ride:</label>
+                <select id="car_ride" name="car_ride" required>
+                    <option value="Taxi">Taxi</option>
+                    <option value="Green">Green</option>
+                    <option value="UberX">UberX</option>
+                    <option value="Berline">Berline</option>
+                </select>
+                <div style="margin: 10px;"></div>
+                <!-- Phone Number -->
+                <label for="phone_number">Phone Number:</label>
+                <input type="text" id="phone_number" name="phone_number" placeholder="Please enter your phone number">
+
+                <!-- Submit Button -->
+                <input type="submit" class="button-50" role="button" value="Save">
+            </form>
+        </div>
+    </div>
+</body>
+</html>

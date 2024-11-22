@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Plan your Uber journey</title>
+
+  <link rel="stylesheet" href="../../static/nav.css">
+  <link rel="stylesheet" href="../../static/view/main_user.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.3.2/socket.io.js"></script>
+  <script src="../../static/view/main_user.js""></script>
+
+
+
+</head>
+<body>
+   <!-- Navbar -->
+   <nav class="navbar">
+    <div class="logo">
+        <img src="../../static/uber-logo.jpg" alt="Uber Logo">
+    </div>
+
+    <ul class="nav-links">
+        <li><a href="{{url_for('home')}}"><button class="button-34" role="button">Home</button></a></li>
+        <li><a href="{{url_for('logout')}}"><button class="button-34" role="button">Logout</button></a></li>
+    </ul>
+</nav>
+</nav>
+  <div id="map"></div>
+
+  <div class="container">
+
+  
+  <div id="location-form" class="form-box">
+    <h2>Find a trip : </h2>
+      <input id="pickup-input" type="text" placeholder="Pick-up location" name="pickup-input">
+
+    <input id="dropoff-input" type="text" placeholder="Drop-off location" name="dropoff-input">
+    <div>
+      <h2>Pickup-time</h2>
+      <select id="time-selection" onchange="togglePickupTime()">
+        <option value="none">None</option>
+        <option value="now"> Pickup Now</option>
+        <option value="later">Pickup Later</option>
+      </select>
+      <input id="pickup-time" type="datetime-local" placeholder="pickup time" name="pickup-time">
+      <button class="button-74" type="button" onclick="showLocations()">Search</button>
+    </div>
+
+    <div class="ride-recommendations">
+      <h1>Please choose a ride and scroll down to request a driver !
+      </h1>
+      <div style="margin: 10px;"></div>
+      <div class="recommended-popular">
+          <div class="recommended">
+              <h2>Recommended</h2>
+              <div class="ride greenRide" id="greenRide">
+                 <label>
+                <input type="radio" name="ride" value="Green" onclick="storeSelectedRide(this)">
+                <span class="ride-option">Green</span>
+                <i class="fas fa-user icon"></i>
+                4
+            </label>
+                  
+                  <p class="n1">2 mins away </p>
+                  <p class="n2">Electric and hybrid vehicles</p>
+                  <p> Distance: </p>
+                 
+<img alt="Green"  src="https://d1a3f4spazzrp4.cloudfront.net/car-types/haloProductImages/v1.1/UberX_Green.png" class="ride-image">
+              </div>
+              <div class="ride uberXRide" id="uberXRide">
+                  <label>
+                    <input type="radio" name="ride" value="UberX" onclick="storeSelectedRide(this)">
+                    <span class="ride-option">UberX</span>
+                    <i class="fas fa-user icon"></i>
+                    4
+                </label>
+                  <p>2 mins away </p>
+                  <p class="n2">Affordable, everyday rides</p>
+                  <p> Distance: </p>
+                  <img alt="UberX" class="ride-image" src="https://d1a3f4spazzrp4.cloudfront.net/car-types/haloProductImages/v1.1/UberX_v1.png">
+              </div>
+          </div>
+          <div class="popular">
+              <h2>Popular</h2>
+              <div class="ride taxiRide" id="taxiRide">
+                  <label>
+                    <input type="radio" name="ride" value="Taxi" onclick="storeSelectedRide(this)">
+                    <span class="ride-option">Taxi</span>
+                    <i class="fas fa-user icon"></i>
+                    6
+                </label>
+                  <p>9 mins away</p>
+                  <p class="n2">Taxi trips at regulated fare as indicated by the taximeter</p>
+                  <p> Distance: </p>
+                  <img alt="Taxi" class="ride-image" src="https://d1a3f4spazzrp4.cloudfront.net/car-types/haloProductImages/v1.1/Taxi_v1.png">
+              </div>
+              <div class="ride berlineRide" id="berlineRide">
+                <label>
+                  <input type="radio" name="ride" value="Berline" onclick="storeSelectedRide(this)">
+                  <span class="ride-option">Berline</span>
+                  <i class="fas fa-user icon"></i>
+                  4
+              </label>
+                  <p>3 mins away </p>
+                  <p class="n2">High end cars with top-rated drivers</p>
+                  <p> Distance: </p>
+                  <img alt="Berline" class="ride-image" src="https://d1a3f4spazzrp4.cloudfront.net/car-types/haloProductImages/package_UberComfort_new_2022.png">
+              </div>
+      </div>
+
+
+
+
+      <div class="action-container">
+        <div class="mm-dropdown">
+          <div class="textfirst">Select Payment method <img src="../../static/uber.png" width="10" height="10" class="down" /></div>
+          <ul>
+              <li class="input-option" data-value="1">
+                  <img src="https://png.pngtree.com/png-vector/20191128/ourmid/pngtree-three-dollar-bills-icon-circle-png-image_2049061.jpg" alt="cash" width="20" height="20" /> Uber cash
+              </li>
+              <li class="input-option" data-value="2">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Credit_or_Debit_Card_Flat_Icon_Vector.svg/2048px-Credit_or_Debit_Card_Flat_Icon_Vector.svg.png" alt="credit" width="20" height="20" /> Credit card
+              </li>
+          </ul>
+      </div>
+      
+      <button class="button-31" role="button" type="submit" onclick="storeUserData()">Request driver</button>
+
+
+     
+
+      </div>
+
+    <script src="api google console api" async defer></script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+

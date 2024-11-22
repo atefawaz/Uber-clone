@@ -1,0 +1,102 @@
+
+#container {
+ 
+
+    width: 35%;
+    background-color: white;
+    margin: auto;
+    text-align: left;
+   
+    padding: 30px;
+    position: relative;
+    border-radius: 5px;
+    box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+    padding: 20px;
+   
+   }
+   
+    /* Style for input labels */
+   label {
+     display: block;
+     margin-bottom: 5px;
+     font-weight: bold;
+   }
+   
+   input[type="text"],
+   input[type="password"] {
+     padding: 8px;
+     width: 100%;
+     margin-bottom: 15px;
+     border-radius: 5px;
+     border: 1px solid black;
+     box-sizing: border-box;
+     font-size: medium;
+   }
+   
+   
+   /* CSS */
+   .button-50 {
+     appearance: button;
+     background-color: #000;
+     background-image: none;
+     border: 1px solid #000;
+     border-radius: 4px;
+     box-shadow: #fff 4px 4px 0 0,#000 4px 4px 0 1px;
+     box-sizing: border-box;
+     color: #fff;
+     cursor: pointer;
+     display: inline-block;
+     font-family: ITCAvantGardeStd-Bk,Arial,sans-serif;
+     font-size: 14px;
+     font-weight: 400;
+     line-height: 20px;
+     margin: 0 5px 10px 0;
+     overflow: visible;
+     padding: 12px 40px;
+     text-align: center;
+     text-transform: none;
+     touch-action: manipulation;
+     user-select: none;
+     -webkit-user-select: none;
+     vertical-align: middle;
+     white-space: nowrap;
+   }
+   
+   .button-50:focus {
+     text-decoration: none;
+   }
+   
+   .button-50:hover {
+     text-decoration: none;
+   }
+   
+   .button-50:active {
+     box-shadow: rgba(0, 0, 0, .125) 0 3px 5px inset;
+     outline: 0;
+   }
+   
+   .button-50:not([disabled]):active {
+     box-shadow: #fff 2px 2px 0 0, #000 2px 2px 0 1px;
+     transform: translate(2px, 2px);
+   }
+   
+   @media (min-width: 768px) {
+     .button-50 {
+       padding: 12px 50px;
+     }
+   }
+   
+   p {
+           font-size: 14px;
+           color: #333; /* Change the color as needed */
+           margin-top: 20px; /* Adjust the top margin */
+           font-family: UberMove, UberMoveText, system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+           }
+   
+           /* Style for the anchor tag within the paragraph */
+   p a {
+     color: black; /* Link color */
+     font-weight: bold; /* Make the text bold */
+     margin-left: 5px; /* Adjust spacing from surrounding text */
+   }
+   

@@ -1,0 +1,65 @@
+
+
+
+  /* Style for the navbar */
+  .navbar {
+    background-color: #000;
+    display:flex;
+    align-items: center;
+    padding: 20px 30px;
+  }
+  
+  /* Style for the Uber logo */
+  .logo img {
+    height: 100px; /* Adjust the height as needed */
+    width: 150px;
+  }
+  
+  /* Style for the navigation links */
+  .nav-links {
+    list-style-type: none;
+    display: flex;
+    justify-content: flex-end;
+    flex-grow: 1;
+  }
+  
+  .nav-links li {
+    margin: 0 10px;
+  }
+  
+  .nav-links a {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  /* CSS buttons in */
+  .button-34 {
+    background:black;
+    border-radius: 999px;
+    box-shadow: white 0 10px 20px -10px;
+    box-sizing: border-box;
+    color: white;
+    cursor: pointer;
+    font-family: Inter, Helvetica, "Apple Color Emoji", "Segoe UI Emoji", NotoColorEmoji, "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", EmojiSymbols, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    opacity: 1;
+    outline: 0 solid transparent;
+    padding: 8px 18px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: fit-content;
+    word-break: break-word;
+    border: 0;
+    transition: background-color 0.3s ease-in-out; /* Adding transition for smooth hover effect */
+}
+
+/* Hover effect */
+.button-34:hover {
+    background-color: white; /* Change the background color on hover */
+    color: #000;
+}
+
+  

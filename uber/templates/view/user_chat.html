@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Chat</title>
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+    }
+
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .chat-box {
+        border: 1px solid #ccc;
+        height: 300px; /* Adjust as needed */
+        overflow-y: scroll;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+    }
+
+    .chat-box p {
+        margin: 5px 0;
+        font-size: 14px;
+    }
+
+    .message-input {
+        display: flex;
+        align-items: center;
+        margin-top: 10px;
+    }
+
+    .message-input input[type="text"] {
+        flex: 1;
+        padding: 8px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        margin-right: 5px;
+    }
+
+    .message-input button {
+        padding: 8px 15px;
+        border: none;
+        background-color: #007bff;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .message-input button:hover {
+        background-color: #0056b3;
+    }
+
+    .driver-info {
+        border: 1px solid #ccc;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+    }
+
+    .driver-info h2 {
+        margin-top: 0;
+    }
+
+    .driver-info p {
+        margin: 5px 0;
+    }
+
+
+    .redirect-section {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .redirect-button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .redirect-button:hover {
+            background-color: #0056b3;
+        }
+
+        .redirect-message {
+            margin-top: 10px;
+            font-style: italic;
+        }
+</style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.3.2/socket.io.js"></script>
+    <!-- Your JavaScript code here -->
+</head>
+<body>
+    <body>
+        <h1>User Chat</h1>
+    
+        <!-- User Chat Box -->
+        <div class="chat-box" id="user-chat">
+            <!-- Chat messages will appear here -->
+        </div>
+    
+        <!-- User Message Input -->
+        <div class="message-input">
+            <input type="text" id="user-message" placeholder="Type your message...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    
+        <!-- Driver Information -->
+        <div class="driver-info">
+            <h2>Driver Information</h2>
+            <p>Username: {{ driver_data.username }}</p>
+            <p>Name: {{ driver_data.name }}</p>
+            <p>Lastname: {{ driver_data.lastname }}</p>
+            <p>Birthdate: {{ driver_data.birthdate }}</p>
+            <p>Car Model: {{ driver_data.car_model }}</p>
+            <p>Car Plate: {{ driver_data.car_plate }}</p>
+            <p>Car Ride: {{ driver_data.car_ride }}</p>
+            <p>Phone Number: {{ driver_data.phone_number }}</p>
+            <p>Order Status: {{ order_status }}</p>
+        </div>
+        <div class="redirect-section">
+            {% if order_status == 'completed' %}
+                <button class="redirect-button" onclick="redirectHome()">Return Home</button>
+                <p class="redirect-message">If the order is completed, click the button to return home.</p>
+            {% endif %}
+        </div>
+    </div>
+  
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.3.2/socket.io.js"></script>
+    <script>
+        const socket = io.connect('http://127.0.0.1:8080');
+
+        function getOrderIdFromURL() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const orderId = urlParams.get('order_id'); // Assuming 'order_id' is the parameter name
+
+            return orderId;
+        }
+
+        function sendMessage() {
+            const message = document.getElementById('user-message').value;
+            const room = getOrderIdFromURL(); // Get order_id from the URL
+            socket.emit('user_message', { message, room });
+            document.getElementById('user-message').value = '';
+        }
+
+        socket.on('connect', () => {
+            const room = getOrderIdFromURL(); // Get order_id from the URL
+            socket.emit('join_room', { room }); // Join the room on connect
+        });
+
+        socket.on('receive_message', function(data) {
+            const receivedMessage = data.message;
+            const chatBox = document.getElementById('user-chat');
+            const newMessage = document.createElement('p');
+            newMessage.textContent = 'Driver: ' + receivedMessage;
+            chatBox.appendChild(newMessage);
+        });
+
+        socket.on('driver_message', function(data) {
+            const receivedMessage = data.message;
+            const chatBox = document.getElementById('user-chat');
+            const newMessage = document.createElement('p');
+            newMessage.textContent = 'Driver: ' + receivedMessage;
+            chatBox.appendChild(newMessage);
+        });
+
+        function redirectHome() {
+        // Redirect to the home page URL
+        window.location.href = '/'; // Replace '/' with your home page URL
+    }
+    </script>
+    </script>
+</body>
+</html>

@@ -1,0 +1,353 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+     }
+  /* Set the map container size */
+  #map {
+    height: 800px;
+    width: 70%;
+    float: right;
+  }
+
+
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Adjust column sizes as needed */
+    grid-gap: 20px; /* Adjust the gap between columns */
+  }
+
+
+  #location-form {
+    width: 400px; /* Set a fixed width for a square appearance */
+    height: 400px; /* Adjust height for square dimensions */
+    float: left;
+    padding: 20px;
+    background-color: #fff; 
+    border-radius: 10px; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+  }
+
+  #location-form h2 {
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+  /* Style for input fields */
+  #location-form input[type="text"] {
+    width: calc(100% - 20px); /* Adjust width to fit within the container */
+    padding: 10px; /* Add padding for better aesthetics */
+    margin-bottom: 15px; /* Increase spacing between inputs */
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+    font-size: 14px; 
+  }
+
+
+  .button-74 {
+background-color: black;
+border: 2px solid white;
+border-radius: 30px;
+box-shadow: black 4px 4px 0 0;
+color: white;
+cursor: pointer;
+display: inline-block;
+font-weight: 600;
+font-size: 18px;
+padding: 0 18px;
+line-height: 50px;
+text-align: center;
+text-decoration: none;
+user-select: none;
+-webkit-user-select: none;
+touch-action: manipulation;
+}
+
+
+.button-74:active {
+box-shadow: #422800 2px 2px 0 0;
+transform: translate(2px, 2px);
+}
+
+@media (min-width: 768px) {
+.button-74 {
+  min-width: 120px;
+  padding: 0 25px;
+}
+}
+
+
+  
+  
+  h2{
+    font: bold;
+  }
+
+  /* CSS for dropdown */
+#time-selection {
+width: calc(100% - 20px); /* Adjust width to fit within the container */
+padding: 10px; /* Add padding for better aesthetics */
+margin-bottom: 15px; /* Increase spacing between inputs */
+border: 1px solid #ccc; /* Set a light gray border */
+border-radius: 5px; /* Add some border radius for rounded corners */
+font-size: 14px; /* Adjust font size */
+}
+
+/* Style for the dropdown arrow */
+#time-selection::after {
+content: "\25BC"; /* Unicode for down arrow */
+position: absolute;
+top: 50%;
+right: 10px;
+transform: translateY(-50%);
+pointer-events: none; /* Ensures clicks go through to the select element */
+}
+
+  /* Style for the container div */
+  div {
+      margin-bottom: 60px; /* Adds space at the bottom */
+    }
+    
+    /* Style for the label */
+    label {
+      display: block; /* Makes the label a block element */
+      margin-bottom: 5px; /* Adds space below the label */
+      font-weight: bold; /* Makes the label text bold */
+    }
+    
+    select {
+      padding: 8px;
+      font-size: 16px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      width: 200px;
+      /* Change font family */
+      font-family: UberMove, UberMoveText, system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font: bold;
+      background-color: black;
+      color: white;
+    }
+    
+    #pickup-time {
+      display: none; /* Hide the pickup time input by default */
+      margin-top: 10px; /* Adjust the top margin */
+      padding: 8px; /* Add padding */
+      font-size: 16px; /* Set font size */
+      border-radius: 4px; /* Add border radius */
+      border: 1px solid #ccc; /* Add border */
+      width: 200px; /* Set width */
+      /* Change font family if needed */
+      font-family: UberMove, UberMoveText, system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    }
+
+    .ride-recommendations {
+      width: 220%; 
+      /* it was 100 */
+      max-width: 800px; 
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin-left: 430px;
+      margin-top: -350px; 
+      margin-bottom: 20px; 
+      display: none;
+    } 
+
+
+    .ride-recommendations {
+      max-height: 500px; /* Set a maximum height for the ride recommendations */
+      overflow-y: auto; /* Enable vertical scroll when content overflows */
+    }
+    
+    
+
+
+    h1, h2, h3 {
+      color: black;
+    }
+
+    .recommended-popular {
+      display: grid;
+      grid-template-columns: 1fr ;
+      gap: -10px;
+    }
+
+
+    .ride {
+      display: block; /* Ensure rides are stacked */
+      width: 100%; /* Set ride width to fill the container */
+      padding: 20px; /* Adjust padding for spacing */
+      margin-bottom: 20px; /* Add margin between rides */
+      border-radius: 10px; /* Add border radius for rounded corners */
+      background-color: #fff; /* Set background color */
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+    }
+
+    
+  
+
+    .ride p {
+      margin: 0;
+    } 
+
+
+
+
+
+    /* icon people  */
+
+    .icon {
+      /* margin-right: 20px;  */
+      margin-left: 10px;
+      font-size: 13px;
+    }
+
+
+
+/* Payment method dropdown styles */
+div.mm-dropdown {
+border: 1px solid #ddd;
+width: 80%;
+border-radius: 3px;
+}
+
+div.mm-dropdown ul {
+list-style: none;
+padding: 0;
+margin: 0;
+border: 0;
+}
+
+div.mm-dropdown ul li,
+div.mm-dropdown div.textfirst {
+padding: 8px 15px; /* Adjusted padding for dropdown items */
+color: #333;
+border-bottom: 1px solid #ddd;
+margin: 0; /* Remove default margin */
+}
+
+div.mm-dropdown div.textfirst img.down {
+float: right;
+margin-top: 6px; /* Adjusted margin for the down arrow */
+}
+
+div.mm-dropdown ul li:last-child {
+border-bottom: 0;
+margin-bottom: 0; /* Remove bottom margin for the last item */
+}
+
+
+
+
+
+
+/* button-31 */
+.button-31 {
+background-color: #222;
+border-radius: 4px;
+border-style: none;
+box-sizing: border-box;
+color: #fff;
+cursor: pointer;
+display: inline-block;
+font-family: "Farfetch Basis","Helvetica Neue",Arial,sans-serif;
+font-size: 16px;
+font-weight: 700;
+line-height: 1;
+margin: 0;
+max-width: none;
+outline: none;
+overflow: hidden;
+/* padding: 9px 20px 8px; */
+position: relative;
+text-align: center;
+text-transform: none;
+user-select: none;
+-webkit-user-select: none;
+touch-action: manipulation;
+width: 50%; /* Adjusted width */
+height: 30%;
+}
+
+
+.button-31:hover,
+.button-31:focus {
+opacity: .75;
+}
+
+
+
+
+
+input[type="radio"] {
+-webkit-appearance: none;
+-moz-appearance: none;
+appearance: none;
+width: 15px; /* Customize the width */
+height: 15px; /* Customize the height */
+border-radius: 1cqb; /* Make it a circle */
+border: 2px solid black; /* Set the border color */
+} 
+
+/* Style the custom radio button when selected */
+input[type="radio"]:checked {
+background-color: black; /* Change the background color when selected */
+}
+
+
+
+/* Styling for Green Ride */
+.greenRide,
+.taxiRide,
+.uberXRide,
+.berlineRide {
+  font: bolder;
+}
+
+.ride-option{
+  color: rgb(0, 0, 0);
+  font-family: UberMoveText, system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 25px;
+  font: weight 900px;;
+}
+
+
+
+.n2{
+  color: rgb(84, 84, 84);
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    font-family: UberMoveText, system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 20px;
+    padding-right: 64px;
+}
+
+
+
+
+
+.ride {
+  /* Other styles for ride block */
+  position: relative; /* Ensure relative positioning */
+  margin-bottom: 20px; /* Add margin between ride blocks */
+}
+
+
+
+.ride-image {
+  width: auto; /* Maintain image aspect ratio */
+  height: 100%; /* Set height to cover the ride block */
+  position: absolute; /* Position the image absolutely */
+  top: 0; /* Align to the top of the ride block */
+  right: 0; /* Align to the right of the ride block */
+  object-fit: cover; /* Maintain aspect ratio and cover the container */
+  /* Other styles for the image */
+}
+
+
+

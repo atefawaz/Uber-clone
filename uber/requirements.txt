@@ -1,0 +1,12 @@
+Flask==2.3.2
+Flask-Bcrypt==1.0.1
+Flask-WTF==1.1.1
+Flask-SocketIO==5.3.4
+Flask-Login==0.6.2
+Flask-Cors==3.0.10
+WTForms==3.0.1
+pymongo==4.6.0
+python-dotenv==1.0.0
+eventlet==0.33.3
+gevent==22.10.2
+bson==0.5.10
